@@ -1,0 +1,87 @@
+GET http://localhost:5050/authors
+
+###
+POST http://localhost:5050/authors/create
+Content-Type: application/json
+
+{
+  "firstName": "Simone",
+  "lastName": "Panci",
+  "email": "simonejonas08@gmail.com",
+  "birth": "05/07/2001",
+  "password": "SimoneBello98@#",
+  "avatar": "https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png"
+}
+
+###
+GET http://localhost:5050/authors/byId/6524159eaa2adee79abe8590
+
+###
+PUT http://localhost:5050/authors/update/651d93372558c3724b6fda8d
+Content-Type: application/json
+
+{
+  "firstName": "Fernando"
+}
+
+###
+DELETE http://localhost:5050/authors/delete/6524159eaa2adee79abe8590
+
+###
+GET http://localhost:5050/blogPosts?page=1
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJTaW1vbmUiLCJsYXN0TmFtZSI6IlBhbmNpIiwiZW1haWwiOiJzaW1vbmVqb25hczA4QGdtYWlsLmNvbSIsImlhdCI6MTY5NzY0MzExNywiZXhwIjoxNjk3OTAyMzE3fQ.nm1ekprNmBADCPET5ikVJ8br_yHjtf9mCLhf4rBvORM
+
+###
+POST http://localhost:5050/blogPosts/
+Content-Type: application/json
+
+{
+  "category": "Cazzo",
+  "title": "Prova,",
+  "cover": "http://url.com/",
+  "readTime": {
+    "value": 45,
+    "unit": "min"
+  },
+  "author": "6528005d270ed0fe2acd6046",
+  "content": "Pisello"
+}
+
+###
+DELETE http://localhost:5050/blogPosts
+
+###
+GET http://localhost:5050/blogPosts/6528041b32bcecf69f36755a/comments
+
+###
+POST http://localhost:5050/blogPosts/6528041b32bcecf69f36755a
+Content-Type: application/json
+
+{
+  "title": "ciao ",
+  "content": "dd"
+}
+
+###
+POST http://localhost:5050/send-email
+Content-Type: application/json
+
+{
+  "subject": "Froci in zona",
+  "text": "Sta attento frate, è pieno de zozzoni"
+}
+
+###
+POST http://localhost:5050/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "ciaosimone98@gmail.com",
+  "password": "SimoneBello98"
+}
+
+
+
+###
+GET http://localhost:5050/author/me
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJNaWNoZWxlICIsImxhc3ROYW1lIjoiUGFuY2kiLCJlbWFpbCI6ImNpYW9zaW1vbmU5OEBnbWFpbC5jb20iLCJpYXQiOjE2OTc3MzIyNzcsImV4cCI6MTY5Nzk5MTQ3N30.OjeSZeh84S-LU2BFqa11oyZsTvr37XTzmbPU5GLo5m0
