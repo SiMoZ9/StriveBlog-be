@@ -5,7 +5,7 @@
   "license": "MIT",
   "engines": {
     "node": ">=14.7.0"
-},
+  },
   "scripts": {
     "dev": "nodemon server.js"
   },
