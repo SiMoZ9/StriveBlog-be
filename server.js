@@ -9,6 +9,7 @@ const githubRoute = require('./routes/github')
 
 const cors = require('cors')
 const path = require('path')
+const session = require("express-session");
 
 
 require('dotenv').config()
@@ -17,6 +18,7 @@ const server = express();
 
 server.use(cors())
 server.use(express.json())
+server.use(session({secret: process.env.SESSION_SECRET}))
 
 server.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
