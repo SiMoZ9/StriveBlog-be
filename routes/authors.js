@@ -116,11 +116,22 @@ authors.post('/authors/create', async (req, res) => {
     try {
         const saveAuthor = await newAuthor.save()
 
-        res.status(201).send({
-            statusCode: 201,
-            message: 'Author created',
-            payload: saveAuthor,
-        })
+        const isEmailExt = await authorModel.exists({email: req.body.email})
+        if (isEmailExt) {
+            res.status(409).send({
+                statusCode: 409,
+                message: "User already exists"
+            })
+        } else {
+
+            res.status(201).send({
+                statusCode: 201,
+                message: 'Author created',
+                payload: saveAuthor,
+            })
+
+            res.redirect(`${process.env.REACT_URL}/home`)
+        }
     } catch (err) {
         res.status(500).send({
             statusCode: 500,

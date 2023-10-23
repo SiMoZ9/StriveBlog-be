@@ -23,7 +23,6 @@ const AuthorSchema = new mongoose.Schema({
     },
     avatar: {
         type: String,
-
     }
 }, {timestamps: true, strict: true})
 

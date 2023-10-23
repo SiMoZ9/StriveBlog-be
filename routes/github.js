@@ -4,6 +4,7 @@ const passport = require('passport')
 const GithubStrategy = require('passport-github2').Strategy;
 const jwt = require('jsonwebtoken')
 const session = require('express-session')
+const User = require('../models/authorModel')
 require('dotenv').config()
 
 
@@ -32,10 +33,23 @@ passport.use(
         {
             clientID: process.env.GITHUB_CLIENT_ID,
             clientSecret: process.env.GITHUB_CLIENT_SECRET,
+            scope: ['user:email'],
             callbackURL: process.env.GITHUB_CALLBACK,
         },
-        (accessToken, refreshToken, profile, done) => {
-            return done(null, profile)
+        async (accessToken, refreshToken, profile, done) => {
+            const githubId = profile.id
+            const name = profile.displayName
+
+/*            const existingUser = await User.findOne(email)
+
+            console.log(email)
+
+            if (existingUser) {
+                return done(null, profile)
+            } else {
+                const newUser = await User.create({githubId, name, email})
+                done(null, newUser)
+            }*/
         }
     )
 )
